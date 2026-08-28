@@ -31,3 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Archivos temporales y locales ###
+
+# Registros generados durante la ejecución
+*.log
+logs/
+
+# Variables de entorno y configuraciones privadas
+.env
+.env.*
+!.env.example
+
+# Archivos generados por los sistemas operativos
+.DS_Store
+Thumbs.db
