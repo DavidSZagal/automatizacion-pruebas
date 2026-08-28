@@ -43,7 +43,7 @@ jobs:
       - name: Verificar y generar cobertura
         run: ./mvnw -B verify
 
-            - name: Publicar resultados de las pruebas
+      - name: Publicar resultados de las pruebas
         if: always()
         uses: actions/upload-artifact@v7
         with:
