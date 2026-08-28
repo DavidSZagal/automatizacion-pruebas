@@ -56,6 +56,31 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
         </plugin>
+		<!-- Genera un reporte HTML navegable de las pruebas -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-report-plugin</artifactId>
+			<version>3.6.0-M1</version>
+
+			<executions>
+				<execution>
+					<id>generate-surefire-report</id>
+					<phase>verify</phase>
+
+					<goals>
+						<goal>report-only</goal>
+					</goals>
+
+					<configuration>
+						<outputDirectory>
+							${project.build.directory}/site
+						</outputDirectory>
+						<outputName>surefire-report</outputName>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>		
+		
 
         <!-- Genera el reporte de cobertura de código -->
         <plugin>
