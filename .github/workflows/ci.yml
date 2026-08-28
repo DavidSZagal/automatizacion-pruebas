@@ -43,7 +43,7 @@ jobs:
       - name: Verificar y generar cobertura
         run: ./mvnw -B verify
 
-      - name: Publicar resultados de las pruebas
+            - name: Publicar resultados de las pruebas
         if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -51,6 +51,8 @@ jobs:
           path: |
             target/surefire-reports/
             target/site/surefire-report.html
+            target/site/css/
+            target/site/images/
           if-no-files-found: warn
           retention-days: 14
 
