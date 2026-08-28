@@ -48,7 +48,11 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: resultados-pruebas
-          path: target/surefire-reports/
+          path: |
+            target/surefire-reports/
+            target/site/surefire-report.html
+            target/site/css/
+            target/site/images/
           if-no-files-found: warn
           retention-days: 14
 
