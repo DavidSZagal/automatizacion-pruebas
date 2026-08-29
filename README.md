@@ -51,3 +51,20 @@ Para comprobar las instalaciones:
 java -version
 mvn -version
 git --version
+
+## Conclusiones
+
+La automatización implementada permite detectar errores de forma temprana
+y mantener resultados repetibles durante el desarrollo. La combinación de
+JUnit, Maven, JaCoCo y GitHub Actions permite compilar, probar y medir la
+cobertura automáticamente.
+
+Además, el uso de ramas, pull requests y reglas de protección mejora la
+trazabilidad de los cambios y evita integrar código que no haya superado
+las pruebas automatizadas.
+
+## Evidencias
+
+Las evidencias de configuración, ejecución de pruebas, cobertura, pipeline,
+artefactos y pull requests se encuentran organizadas en la documentación
+de la Actividad 1.
