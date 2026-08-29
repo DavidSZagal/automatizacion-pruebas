@@ -37,11 +37,26 @@ jobs:
       - name: Compilar el proyecto
         run: ./mvnw -B clean compile
 
-      - name: Ejecutar pruebas unitarias
-        run: ./mvnw -B test
-
-      - name: Verificar y generar cobertura
+      - name: Ejecutar pruebas unitarias y escenarios BDD
         run: ./mvnw -B verify
+
+      - name: Verificar ejecución de Cucumber
+        run: |
+          BDD_REPORT="$(find target/surefire-reports \
+            -type f \
+            -name '*RunCucumberTest*.xml' \
+            -print -quit)"
+
+          if [ -z "$BDD_REPORT" ]; then
+            echo "No se encontró el reporte de Cucumber"
+            exit 1
+          fi
+
+          grep -q 'failures="0"' "$BDD_REPORT"
+          grep -q 'errors="0"' "$BDD_REPORT"
+          grep -Eq 'tests="[1-9][0-9]*"' "$BDD_REPORT"
+
+          echo "Reporte BDD verificado: $BDD_REPORT"
 
       - name: Publicar resultados de las pruebas
         if: always()
@@ -53,6 +68,17 @@ jobs:
             target/site/surefire-report.html
             target/site/css/
             target/site/images/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Publicar resultados BDD
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: resultados-bdd
+          path: |
+            target/surefire-reports/*RunCucumberTest*.xml
+            target/surefire-reports/*RunCucumberTest*.txt
           if-no-files-found: warn
           retention-days: 14
 
@@ -71,6 +97,7 @@ jobs:
           echo "## Resumen de integración continua" >> "$GITHUB_STEP_SUMMARY"
           echo "- Rama: ${{ github.ref_name }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Java: 17" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Compilación y pruebas mediante Maven" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Reportes Surefire y JaCoCo publicados" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Pruebas unitarias y escenarios BDD ejecutados" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Resultado Cucumber validado mediante Surefire" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Reportes Surefire, BDD y JaCoCo publicados" >> "$GITHUB_STEP_SUMMARY"
           echo "- Estado final: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
