@@ -163,3 +163,12 @@ Las métricas y gráficos de JMeter fueron analizados para explicar el comportam
 Se definieron estados correctos, advertencias y alertas críticas para detectar posibles degradaciones del servicio.
 
 ![Alertas automáticas de rendimiento](docs/evidencias/actividad-2/08-alertas-automaticas-rendimiento.PNG)
+### Pull request y cierre de la actividad
+
+La documentación final fue validada mediante un pull request con todos los controles de integración continua aprobados.
+
+![Pull request de documentación final](docs/evidencias/actividad-2/11-pull-request-documentacion-final.PNG)
+
+El pull request fue integrado correctamente en la rama `develop`.
+
+![Integración final de la documentación](docs/evidencias/actividad-2/12-merge-documentacion-final.PNG)
