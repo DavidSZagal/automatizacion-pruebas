@@ -99,5 +99,21 @@ jobs:
           echo "- Java: 17" >> "$GITHUB_STEP_SUMMARY"
           echo "- Pruebas unitarias y escenarios BDD ejecutados" >> "$GITHUB_STEP_SUMMARY"
           echo "- Resultado Cucumber validado mediante Surefire" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Reportes Surefire, BDD y JaCoCo publicados" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Reporte HTML navegable de Cucumber generado" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Reportes Surefire, BDD, Cucumber HTML y JaCoCo publicados" >> "$GITHUB_STEP_SUMMARY"
           echo "- Estado final: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verificar reporte HTML BDD
+        run: |
+          test -f target/cucumber-reports/cucumber.html
+          test -f target/cucumber-reports/cucumber.json
+          echo "Reporte HTML BDD generado correctamente"
+
+      - name: Publicar reporte HTML BDD
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: reporte-html-bdd
+          path: target/cucumber-reports/
+          if-no-files-found: error
+          retention-days: 14
