@@ -51,6 +51,7 @@ Para comprobar las instalaciones:
 java -version
 mvn -version
 git --version
+```
 
 ## Conclusiones
 
@@ -65,6 +66,30 @@ las pruebas automatizadas.
 
 ## Evidencias
 
-Las evidencias de configuración, ejecución de pruebas, cobertura, pipeline,
-artefactos y pull requests se encuentran organizadas en la documentación
-de la Actividad 1.
+### Ejecución local de las pruebas
+
+Las pruebas se ejecutaron localmente mediante Maven. El resultado fue de
+ocho pruebas aprobadas, sin fallos ni errores.
+
+![Ejecución local de las pruebas](docs/evidencias/actividad-1/01-ejecucion-local-pruebas.png)
+
+### Cobertura de código local
+
+JaCoCo generó un reporte navegable con una cobertura total del 88 % y una
+cobertura del 100 % para el servicio de compras.
+
+![Cobertura local con JaCoCo](docs/evidencias/actividad-1/02-cobertura-jacoco-local.png)
+
+### Ejecución de las pruebas en integración continua
+
+GitHub Actions ejecutó automáticamente la compilación, las pruebas y la
+generación de los reportes sobre la rama `develop`.
+
+![Ejecución de pruebas en GitHub Actions](docs/evidencias/actividad-1/03-ejecucion-pruebas-en-ci.png)
+
+### Reportes publicados como artefactos
+
+El pipeline publicó los resultados de Surefire y el reporte de cobertura
+JaCoCo como artefactos descargables.
+
+![Artefactos publicados por el pipeline](docs/evidencias/actividad-1/04-artefactos-reportes-ci.png)
