@@ -16,6 +16,8 @@ import org.junit.platform.suite.api.Suite;
         value = "com.proyecto.compras.steps")
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
-        value = "pretty")
+        value = "pretty,"
+                + "html:target/cucumber-reports/cucumber.html,"
+                + "json:target/cucumber-reports/cucumber.json")
 public class RunCucumberTest {
 }
