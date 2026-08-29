@@ -35,6 +35,9 @@ La aplicación permite gestionar el registro de compras y contempla:
 - JaCoCo.
 - Git y GitHub.
 - GitHub Actions.
+- Cucumber.
+- Gherkin.
+- Apache JMeter.
 
 ## Requisitos previos
 
@@ -93,3 +96,70 @@ El pipeline publicó los resultados de Surefire y el reporte de cobertura
 JaCoCo como artefactos descargables.
 
 ![Artefactos publicados por el pipeline](docs/evidencias/actividad-1/04-artefactos-reportes-ci.png)
+
+## Flujo completo de automatización — Actividad 2
+
+Durante la Actividad 2 se amplió el proyecto incorporando BDD con Cucumber, pruebas básicas de rendimiento con Apache JMeter y una propuesta de alertas automáticas.
+
+El flujo implementado fue el siguiente:
+
+1. Se realizó una sesión Three Amigos para definir la historia de usuario, las reglas de negocio, los ejemplos y los criterios de aceptación.
+2. Los criterios acordados se transformaron en escenarios Gherkin, incluyendo un Scenario Outline para validar diferentes cantidades y niveles de stock.
+3. Los escenarios fueron automatizados mediante Cucumber, Java y JUnit utilizando un runner y Step Definitions.
+4. Las pruebas BDD se integraron en GitHub Actions para ejecutarse automáticamente durante la integración continua.
+5. El pipeline genera un reporte HTML navegable de Cucumber y lo publica como artefacto descargable.
+6. Se implementó una prueba básica de rendimiento con Apache JMeter para simular 200 solicitudes al servicio de compras.
+7. Se analizaron las métricas principales del dashboard de JMeter, incluyendo tiempo de respuesta, percentiles, throughput, APDEX y porcentaje de errores.
+8. Se documentó una propuesta de alertas automáticas basada en umbrales de rendimiento y canales de notificación.
+
+La verificación final del proyecto ejecutó 14 pruebas automatizadas sin fallos ni errores.
+
+## Evidencias de la Actividad 2
+
+### Sesión Three Amigos
+
+Se documentaron la historia de usuario, los participantes, las reglas de negocio, los ejemplos y los criterios de aceptación.
+
+![Sesión Three Amigos](docs/evidencias/actividad-2/01-sesion-tres-amigos.PNG)
+
+### Escenarios Gherkin
+
+Los criterios de aceptación se transformaron en escenarios Gherkin y en un Scenario Outline con diferentes ejemplos.
+
+![Escenarios Gherkin](docs/evidencias/actividad-2/02-escenarios-gherkin.PNG)
+
+### Step Definitions con Java y Cucumber
+
+Los pasos Given, When y Then fueron implementados en Java para automatizar los escenarios del registro de compras.
+
+![Step Definitions de Cucumber](docs/evidencias/actividad-2/03-step-definitions-cucumber.PNG)
+
+### Integración BDD en GitHub Actions
+
+El pipeline ejecuta las pruebas unitarias y los escenarios BDD, valida sus resultados y publica los artefactos correspondientes.
+
+![Integración BDD en GitHub Actions](docs/evidencias/actividad-2/04-integracion-bdd-github-actions.PNG)
+
+### Reporte HTML de Cucumber
+
+Cucumber genera un reporte HTML navegable con los escenarios, ejemplos, pasos y resultados de la ejecución.
+
+![Reporte HTML de Cucumber](docs/evidencias/actividad-2/05-reporte-html-cucumber.PNG)
+
+### Dashboard de Apache JMeter
+
+La prueba de rendimiento ejecutó 200 solicitudes y permitió revisar los tiempos de respuesta, errores, throughput y APDEX.
+
+![Dashboard de Apache JMeter](docs/evidencias/actividad-2/06-dashboard-jmeter.PNG)
+
+### Interpretación de métricas
+
+Las métricas y gráficos de JMeter fueron analizados para explicar el comportamiento observado durante la prueba.
+
+![Interpretación de métricas de JMeter](docs/evidencias/actividad-2/07-interpretacion-metricas-jmeter.PNG)
+
+### Alertas automáticas de rendimiento
+
+Se definieron estados correctos, advertencias y alertas críticas para detectar posibles degradaciones del servicio.
+
+![Alertas automáticas de rendimiento](docs/evidencias/actividad-2/08-alertas-automaticas-rendimiento.PNG)
